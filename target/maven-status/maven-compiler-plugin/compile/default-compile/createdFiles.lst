@@ -1,0 +1,10 @@
+com\web\core\util\UnableToLoadPropertiesException.class
+com\web\core\util\PropertyUtils.class
+com\web\core\base\BaseTest.class
+com\web\core\listeners\TestListener.class
+com\web\core\util\CsvDataProviders.class
+com\web\core\util\ExtentReportManager.class
+com\web\core\base\BrowserDriverFactory.class
+com\web\core\util\EyesManager.class
+com\web\core\base\TestUtilities.class
+com\web\core\base\BasePageObject.class
