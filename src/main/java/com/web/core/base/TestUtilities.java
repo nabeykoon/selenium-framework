@@ -30,15 +30,6 @@ public class TestUtilities extends BaseTest {
         }
     }
 
-    @DataProvider(name = "files")
-    protected static Object[][] files() {
-        return new Object[][]{
-                {1, "Intel-logo.jpg"},
-                {2, "download.png"},
-                {3, "text.txt"}
-        };
-    }
-
 
     /**
      * Take screenshot from any point of test

@@ -62,7 +62,6 @@ public class EyesManager {
                 "java -jar src/main/resources/ImageTester.jar -k %s -f %s",
                 PropertyUtils.getProperty ("applitools.api.key"),
                 filepath);
-
         Process process = Runtime.getRuntime().exec(command);
         process.waitFor();
         String stream = IOUtils.toString(process.getInputStream(), "UTF-8");
