@@ -15,15 +15,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BrowserDriverFactory {
-    private String browser;
-    private Logger log;
-    private String os;
-    private String node;
-
-/*    public BrowserDriverFactory(String browser, Logger log) {
-        this.browser = browser.toLowerCase ();
-        this.log = log;
-    }*/
 
     public static WebDriver createDriver(String browser, Logger log) {
         // Create driver
@@ -73,25 +64,25 @@ public class BrowserDriverFactory {
         log.info ("Create driver: " + browser);
         RemoteWebDriver driver;
 
-        Platform platform = Platform.fromString(os.toUpperCase());
+        Platform platform = Platform.fromString (os.toUpperCase ());
         switch (browser.toLowerCase ()) {
 
             case "chrome":
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setCapability("platform", platform);
+                ChromeOptions chromeOptions = new ChromeOptions ();
+                chromeOptions.setCapability ("platform", platform);
                 driver = new RemoteWebDriver (new URL (node + "/wd/hub"), chromeOptions);
                 break;
 
             case "firefox":
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.setCapability("platform", platform);
-                driver = new RemoteWebDriver(new URL(node + "/wd/hub"), firefoxOptions);
+                FirefoxOptions firefoxOptions = new FirefoxOptions ();
+                firefoxOptions.setCapability ("platform", platform);
+                driver = new RemoteWebDriver (new URL (node + "/wd/hub"), firefoxOptions);
                 break;
 
             default:
                 System.out.println ("Do not know how to start: " + browser + ", starting chrome.");
-                ChromeOptions defaultChromeOptions = new ChromeOptions();
-                defaultChromeOptions.setCapability("platform", platform);
+                ChromeOptions defaultChromeOptions = new ChromeOptions ();
+                defaultChromeOptions.setCapability ("platform", platform);
                 driver = new RemoteWebDriver (new URL (node + "/wd/hub"), defaultChromeOptions);
                 break;
         }

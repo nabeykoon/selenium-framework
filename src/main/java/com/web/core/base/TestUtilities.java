@@ -1,15 +1,11 @@
 package com.web.core.base;
 
-import com.applitools.eyes.MatchLevel;
-import com.applitools.eyes.RectangleSize;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogEntry;
-import org.testng.annotations.DataProvider;
 
 import java.io.File;
 import java.io.IOException;

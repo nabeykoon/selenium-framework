@@ -1,11 +1,5 @@
 package com.web.core.base;
 
-import com.applitools.eyes.EyesRunner;
-import com.applitools.eyes.MatchLevel;
-import com.applitools.eyes.RectangleSize;
-import com.applitools.eyes.TestResultsSummary;
-import com.applitools.eyes.selenium.ClassicRunner;
-import com.applitools.eyes.selenium.Eyes;
 import com.web.core.util.EyesManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,12 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
-import java.util.Properties;
 
 @Listeners({com.web.core.listeners.TestListener.class})
 
