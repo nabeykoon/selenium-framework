@@ -13,6 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static com.web.core.util.TimeUtils.getSystemTime;
+import static com.web.core.util.TimeUtils.getTodaysDate;
+
 public class TestUtilities extends BaseTest {
 
     protected String basePath;
@@ -54,16 +57,18 @@ public class TestUtilities extends BaseTest {
     /**
      * Todays date in yyyyMMdd format
      */
+/*
     private static String getTodaysDate() {
         return (new SimpleDateFormat ("yyyyMMdd").format (new Date ()));
     }
+*/
 
     /**
      * Current time in HHmmssSSS
      */
-    private String getSystemTime() {
+  /*  private String getSystemTime() {
         return (new SimpleDateFormat ("HHmmssSSS").format (new Date ()));
-    }
+    }*/
 
     /**
      * Get logs from browser console
