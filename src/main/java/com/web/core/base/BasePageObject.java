@@ -1,5 +1,6 @@
 package com.web.core.base;
 
+import com.web.core.Components.ButtonComponent;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -67,6 +68,30 @@ public class BasePageObject {
     }
 
     /**
+     * Focus on element and then click on it with given locator when its clickable
+     */
+
+    protected void focusedClick(By locator){
+        waitUntilClickable (locator,10);
+        WebElement element = find (locator);
+        Actions action = new Actions(driver);
+        //Focus to element
+        action.moveToElement(element).perform();
+        // To click on the element
+        action.moveToElement(element).click().perform();
+    }
+
+    /**
+     * Click on slow loadable buttons (Buttons with synchronization issues)
+     */
+
+    protected void clickOnSlowLoadableButton(By locator){
+        ButtonComponent button = new ButtonComponent (locator,driver);
+        button.get ();
+        button.click ();
+    }
+
+    /**
      * Type given text into element with given locator
      */
     protected void type(String text, By locator) {
@@ -92,6 +117,23 @@ public class BasePageObject {
         while (attempts < 2) {
             try {
                 waitFor(ExpectedConditions.visibilityOfElementLocated(locator),
+                        (timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null));
+                break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+    }
+
+    /**
+     * Wait for given number of seconds for element with given locator until clickable
+     * on the page
+     */
+    protected void waitUntilClickable(By locator, Integer... timeOutInSeconds) {
+        int attempts = 0;
+        while (attempts < 2) {
+            try {
+                waitFor(ExpectedConditions.elementToBeClickable (locator),
                         (timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null));
                 break;
             } catch (StaleElementReferenceException e) {

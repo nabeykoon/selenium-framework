@@ -7,4 +7,6 @@ com\web\core\util\ExtentReportManager.class
 com\web\core\base\BrowserDriverFactory.class
 com\web\core\util\EyesManager.class
 com\web\core\base\TestUtilities.class
+com\web\core\Components\ButtonComponent.class
+com\web\core\util\TimeUtils.class
 com\web\core\base\BasePageObject.class

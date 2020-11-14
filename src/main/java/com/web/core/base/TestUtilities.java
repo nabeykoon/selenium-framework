@@ -55,22 +55,6 @@ public class TestUtilities extends BaseTest {
 
 
     /**
-     * Todays date in yyyyMMdd format
-     */
-/*
-    private static String getTodaysDate() {
-        return (new SimpleDateFormat ("yyyyMMdd").format (new Date ()));
-    }
-*/
-
-    /**
-     * Current time in HHmmssSSS
-     */
-  /*  private String getSystemTime() {
-        return (new SimpleDateFormat ("HHmmssSSS").format (new Date ()));
-    }*/
-
-    /**
      * Get logs from browser console
      */
     protected List<LogEntry> getBrowserLogs() {
