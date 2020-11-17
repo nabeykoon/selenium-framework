@@ -1,5 +1,6 @@
 package com.web.core.base;
 
+import com.paulhammant.ngwebdriver.NgWebDriver;
 import com.web.core.Components.ButtonComponent;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -16,6 +17,7 @@ public class BasePageObject {
 
     protected WebDriver driver;
     protected Logger log;
+    protected NgWebDriver ngDriver;
 
     public BasePageObject(WebDriver driver, Logger log) {
         this.driver = driver;
@@ -92,6 +94,16 @@ public class BasePageObject {
     }
 
     /**
+     * Click on slow loadable buttons (Buttons with synchronization issues)
+     */
+
+    protected void focusedClickOnSlowLoadableButton(By locator){
+        ButtonComponent button = new ButtonComponent (locator,driver);
+        button.get ();
+        button.focusedClick ();
+    }
+
+    /**
      * Type given text into element with given locator
      */
     protected void type(String text, By locator) {
@@ -140,6 +152,14 @@ public class BasePageObject {
             }
             attempts++;
         }
+    }
+
+    /**
+     * wait until all angular request to be complete before interactive with elements. This will solve most of the synchronization issues in angular based web apps
+     */
+    protected void waitForAngularRequestsToFinish(){
+        ngDriver = new NgWebDriver ((JavascriptExecutor)driver);
+        ngDriver.waitForAngularRequestsToFinish ();
     }
 
     /** Wait for alert present and then switch to it */

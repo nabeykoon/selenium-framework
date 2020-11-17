@@ -3,7 +3,10 @@ package com.web.core.Components;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.SlowLoadableComponent;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Clock;
 
@@ -22,10 +25,18 @@ public class ButtonComponent extends SlowLoadableComponent<ButtonComponent> {
     public void click() {
         this.driver.findElement(this.locator).click();
     }
+    public void focusedClick() {
+        WebElement element = this.driver.findElement(this.locator);
+        Actions action = new Actions(this.driver);
+        //Focus to element
+        action.moveToElement(element).perform();
+        // To click on the element
+        action.moveToElement(element).click().perform();
+    }
 
     @Override
     protected void load() {
-
+        // not to implement load method for components.
     }
 
     @Override
