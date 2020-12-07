@@ -1,5 +1,6 @@
 package com.web.core.base;
 
+import com.epam.reportportal.testng.ReportPortalTestNGListener;
 import com.web.core.util.EyesManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +12,7 @@ import org.testng.annotations.*;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
-@Listeners({com.web.core.listeners.TestListener.class})
+@Listeners({com.web.core.listeners.TestListener.class, ReportPortalTestNGListener.class})
 
 
 public class BaseTest {

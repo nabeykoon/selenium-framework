@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Iterator;
@@ -109,6 +110,17 @@ public class BasePageObject {
     protected void type(String text, By locator) {
         waitForVisibilityOf(locator, 10);
         find(locator).sendKeys(text);
+    }
+
+    /**
+     * Select a value for a dropdown list by visible text
+     * @param value
+     * @param locator
+     */
+    protected void selectValueForDropdown(String value, By locator){
+        waitUntilClickable (locator, 10);
+        Select select = new Select (find (locator));
+        select.selectByVisibleText (value);
     }
 
     /**

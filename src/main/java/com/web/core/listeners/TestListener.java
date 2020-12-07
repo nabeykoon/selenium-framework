@@ -20,6 +20,9 @@ import org.testng.ITestResult;
 import java.io.File;
 import java.io.IOException;
 
+import static com.web.core.util.TimeUtils.getSystemTime;
+import static com.web.core.util.TimeUtils.getTodaysDate;
+
 public class TestListener implements ITestListener {
 
     Logger log;
@@ -53,21 +56,32 @@ public class TestListener implements ITestListener {
       // In case of returning RemoteWebDriver: Use Augmenter class to enhances the RemoteWebDriver by adding to it various interfaces including the TakesScreenshot interface.
         driver = new Augmenter ().augment(driver);
         log.info ("Driver hashcode for screenshot " + driver.hashCode ());
-        String path = takeScreenshotDuringFailure (testName, result.getMethod ().getMethodName (), driver);
+        String path = System.getProperty ("user.dir")
+                + File.separator + File.separator + "test-output"
+                + File.separator + File.separator + "screenshots"
+                + File.separator + File.separator + getTodaysDate ()
+                + File.separator + File.separator + testSuiteName
+                + File.separator + File.separator + testName
+                + File.separator + File.separator + "onTestFail"
+                + File.separator + File.separator +
+                getSystemTime () + "-" + result.getMethod ().getMethodName () + ".png";
+        File scrFile = takeScreenshotDuringFailure (path, driver);
         ExtentTest.get ().fail ("Failure Screenshot", MediaEntityBuilder.createScreenCaptureFromPath (path, result.getMethod ().getMethodName ()).build ());
         ExtentTest.get ().log (Status.FAIL, "Test Failed");
         ExtentTest.get ().fail (result.getThrowable ());
+
+        //Attach screenshot to Reportportal
+        log.info ("RP_MESSAGE#FILE#{}#{}", scrFile.getAbsolutePath (), "Failure Screenshot");
     }
 
-    protected String takeScreenshotDuringFailure(String testName, String testMethodName, WebDriver driver) {
+    private File takeScreenshotDuringFailure(String path, WebDriver driver) {
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs (OutputType.FILE);
-        String path = System.getProperty ("user.dir") + "\\Extent Reports\\Screenshots\\" + testName + "-" + testMethodName + ".png";
         try {
             FileUtils.copyFile (scrFile, new File (path));
         } catch (IOException e) {
             e.printStackTrace ();
         }
-        return path;
+        return scrFile;
     }
 
 
