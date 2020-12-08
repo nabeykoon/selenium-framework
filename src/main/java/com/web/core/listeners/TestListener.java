@@ -6,6 +6,8 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.web.core.base.BaseTest;
 import com.web.core.util.ExtentReportManager;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +19,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -72,6 +75,11 @@ public class TestListener implements ITestListener {
 
         //Attach screenshot to Reportportal
         log.info ("RP_MESSAGE#FILE#{}#{}", scrFile.getAbsolutePath (), "Failure Screenshot");
+
+        //Attach screenshot to Allure Reports"
+
+        Allure.addAttachment(result.getMethod ().getMethodName (), new ByteArrayInputStream (((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES)));
+
     }
 
     private File takeScreenshotDuringFailure(String path, WebDriver driver) {
@@ -83,7 +91,6 @@ public class TestListener implements ITestListener {
         }
         return scrFile;
     }
-
 
     @Override
     public void onTestSkipped(ITestResult result) {
