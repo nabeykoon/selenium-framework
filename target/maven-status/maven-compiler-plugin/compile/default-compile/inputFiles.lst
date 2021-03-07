@@ -2,10 +2,12 @@ C:\Repos\selenium-framework\src\main\java\com\web\core\util\EyesManager.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\util\ExtentReportManager.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\util\TimeUtils.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\listeners\TestListener.java
+C:\Repos\selenium-framework\src\main\java\com\web\core\Components\ButtonComponent.java
+C:\Repos\selenium-framework\src\main\java\com\web\core\util\PropertyUtils.java
+C:\Repos\selenium-framework\src\main\java\com\web\core\exception\ScriptException.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\base\BasePageObject.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\base\TestUtilities.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\base\BrowserDriverFactory.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\base\BaseTest.java
+C:\Repos\selenium-framework\src\main\java\com\web\core\exception\FrameworkException.java
 C:\Repos\selenium-framework\src\main\java\com\web\core\util\CsvDataProviders.java
-C:\Repos\selenium-framework\src\main\java\com\web\core\Components\ButtonComponent.java
-C:\Repos\selenium-framework\src\main\java\com\web\core\util\PropertyUtils.java
