@@ -37,7 +37,7 @@ public class EyesManager {
     }
 
     public void validateWindow(Enum Match, boolean requireFullPage) {
-        eyes.open(driver, "herokuapp", Thread.currentThread().getStackTrace()[2].getMethodName(), new RectangleSize(1920, 1080));
+        eyes.open(driver, "herokuapp", Thread.currentThread().getStackTrace()[2].getMethodName());
         eyes.setMatchLevel(MatchLevel.STRICT);
         //define Full page need to be considered
         eyes.setForceFullPageScreenshot(requireFullPage);
