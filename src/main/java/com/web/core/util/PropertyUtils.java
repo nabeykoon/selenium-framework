@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyUtils {
-    private static PropertyUtils INSTANCE = null;
+    private static volatile PropertyUtils INSTANCE = null;
     private final Properties props = new Properties();
 
     private PropertyUtils() {
@@ -13,7 +13,7 @@ public class PropertyUtils {
         this.props.putAll(System.getProperties());
     }
 
-    private static PropertyUtils getInstance() {
+    private static synchronized PropertyUtils getInstance() {
         if (PropertyUtils.INSTANCE == null) {
             PropertyUtils.INSTANCE = new PropertyUtils();
         }

@@ -32,12 +32,10 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void setUp(Method method, @Optional("chrome") String browser, @Optional String os, @Optional String node, ITestContext context) {
 
-        String testName = context.getCurrentXmlTest().getName();
-
         //context.setAttribute ("WebDriver", driver);
         context.setAttribute("browser", browser);
         this.testSuiteName = context.getSuite().getName();
-        this.testName = testName;
+        this.testName = context.getCurrentXmlTest().getName();
         this.testMethodName = method.getName();
         log = LogManager.getLogger(testMethodName);
 
